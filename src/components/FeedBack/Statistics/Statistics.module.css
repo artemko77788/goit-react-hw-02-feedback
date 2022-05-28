@@ -1,0 +1,13 @@
+.statistics {
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
