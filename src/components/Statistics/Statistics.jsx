@@ -1,4 +1,5 @@
-import Notification from '../Notification';
+import PropTypes from 'prop-types';
+import Notification from 'components/Notification';
 import s from './Statistics.module.css';
 
 const Statistics = ({
@@ -32,5 +33,14 @@ const Statistics = ({
       </span>
     </div>
   );
+};
+
+Statistics.propTypes = {
+  names: PropTypes.arrayOf(PropTypes.string.isRequired),
+  countTotalFeedback: PropTypes.func.isRequired,
+  total: PropTypes.string.isRequired,
+  countPositiveFeedbackPercentage: PropTypes.func.isRequired,
+  feedback: PropTypes.string.isRequired,
+  value: PropTypes.arrayOf(PropTypes.node.isRequired),
 };
 export default Statistics;
