@@ -30,9 +30,11 @@ class App extends React.Component {
   render() {
     const { bad, good, neutral } = this.state;
 
-    const options = Object.entries(this.state).reduce((acc, value) => {
-      return [...acc, value[0]];
-    }, []);
+    const options = Object.entries(this.state);
+
+    //   .reduce((acc, value) => {
+    //   return [...acc, value[0]];
+    // }, []);
 
     return (
       <div className={s.app}>
