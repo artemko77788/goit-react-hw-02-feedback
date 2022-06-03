@@ -14,7 +14,7 @@ const Statistics = ({
     <Notification massage="There is no feedback" />
   ) : (
     <div className={s.statistics}>
-      {names.map((name, index) => {
+      {names.map(([name, index]) => {
         return (
           <span key={name} className={s.text}>
             {name}: {value[index]}
@@ -36,7 +36,7 @@ const Statistics = ({
 };
 
 Statistics.propTypes = {
-  names: PropTypes.arrayOf(PropTypes.string.isRequired),
+  names: PropTypes.arrayOf(PropTypes.node.isRequired),
   countTotalFeedback: PropTypes.func.isRequired,
   total: PropTypes.string.isRequired,
   countPositiveFeedbackPercentage: PropTypes.func.isRequired,

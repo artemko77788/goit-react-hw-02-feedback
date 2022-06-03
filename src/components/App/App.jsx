@@ -28,8 +28,6 @@ class App extends React.Component {
   };
 
   render() {
-    const { bad, good, neutral } = this.state;
-
     const options = Object.entries(this.state);
 
     //   .reduce((acc, value) => {
@@ -47,8 +45,8 @@ class App extends React.Component {
 
         <Section title="Statistics">
           <Statistics
-            names={['good', 'neutral', 'bad']}
-            value={[good, neutral, bad]}
+            names={options}
+            value={options}
             total="Total"
             feedback="Positive Feedback"
             countTotalFeedback={this.countTotalFeedback}
