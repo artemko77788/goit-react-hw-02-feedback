@@ -5,16 +5,10 @@ import Section from '../Section';
 import s from './App.module.css';
 
 class App extends React.Component {
-  static defaultProps = {
+  state = {
     good: 0,
     neutral: 0,
     bad: 0,
-  };
-
-  state = {
-    good: this.props.good,
-    neutral: this.props.neutral,
-    bad: this.props.bad,
   };
 
   onLeaveFeedback = name => {
@@ -24,9 +18,7 @@ class App extends React.Component {
   };
 
   countTotalFeedback = () => {
-    const { good, bad, neutral } = this.state;
-    const count = good + bad + neutral;
-    return count;
+    return Object.values(this.state).reduce((acc, value) => acc + value, 0);
   };
 
   countPositiveFeedbackPercentage = () => {
@@ -37,18 +29,23 @@ class App extends React.Component {
 
   render() {
     const { bad, good, neutral } = this.state;
+
+    const options = Object.entries(this.state).reduce((acc, value) => {
+      return [...acc, value[0]];
+    }, []);
+
     return (
       <div className={s.app}>
         <Section title="Plese leave feedback">
           <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
+            options={options}
             onLeaveFeedback={this.onLeaveFeedback}
           />
         </Section>
 
         <Section title="Statistics">
           <Statistics
-            names={['Good', 'Neutral', 'Bad']}
+            names={['good', 'neutral', 'bad']}
             value={[good, neutral, bad]}
             total="Total"
             feedback="Positive Feedback"

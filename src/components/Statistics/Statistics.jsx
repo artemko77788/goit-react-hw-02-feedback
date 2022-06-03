@@ -16,7 +16,7 @@ const Statistics = ({
     <div className={s.statistics}>
       {names.map((name, index) => {
         return (
-          <span key={name}>
+          <span key={name} className={s.text}>
             {name}: {value[index]}
           </span>
         );
