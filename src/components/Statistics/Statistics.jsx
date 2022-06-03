@@ -13,7 +13,7 @@ const Statistics = ({
     <>
       {!countTotalFeedback && <Notification massage="There is no feedback" />}
 
-      {!!countTotalFeedback && (
+      {countTotalFeedback > 0 && (
         <div className={s.statistics}>
           {names.map(([name, val]) => {
             return (
