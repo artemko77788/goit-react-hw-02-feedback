@@ -15,10 +15,10 @@ const Statistics = ({
 
       {!!countTotalFeedback && (
         <div className={s.statistics}>
-          {names.map(([name, index]) => {
+          {names.map(([name, val]) => {
             return (
               <span key={name} className={s.text}>
-                {name} : {index}
+                {name} : {val}
               </span>
             );
           })}
@@ -43,6 +43,5 @@ Statistics.propTypes = {
   total: PropTypes.string.isRequired,
   countPositiveFeedbackPercentage: PropTypes.number.isRequired,
   feedback: PropTypes.string.isRequired,
-  value: PropTypes.arrayOf(PropTypes.node.isRequired),
 };
 export default Statistics;

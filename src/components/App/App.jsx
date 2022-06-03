@@ -29,6 +29,7 @@ class App extends React.Component {
 
   render() {
     const options = Object.entries(this.state);
+
     const total = this.countTotalFeedback();
     const percent = this.countPositiveFeedbackPercentage();
     return (
