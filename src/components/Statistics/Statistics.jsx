@@ -8,38 +8,40 @@ const Statistics = ({
   total,
   countPositiveFeedbackPercentage,
   feedback,
-  value,
 }) => {
-  return countTotalFeedback() === 0 ? (
-    <Notification massage="There is no feedback" />
-  ) : (
-    <div className={s.statistics}>
-      {names.map(([name, index]) => {
-        return (
-          <span key={name} className={s.text}>
-            {name}: {value[index]}
+  return (
+    <>
+      {!countTotalFeedback && <Notification massage="There is no feedback" />}
+
+      {!!countTotalFeedback && (
+        <div className={s.statistics}>
+          {names.map(([name, index]) => {
+            return (
+              <span key={name} className={s.text}>
+                {name} : {index}
+              </span>
+            );
+          })}
+          <span>
+            {total}: {countTotalFeedback}
           </span>
-        );
-      })}
 
-      <span>
-        {total}: {countTotalFeedback()}
-      </span>
-
-      <span
-        className={countPositiveFeedbackPercentage() <= 50 ? s.red : s.green}
-      >
-        {feedback}: {countPositiveFeedbackPercentage()}%
-      </span>
-    </div>
+          <span
+            className={countPositiveFeedbackPercentage <= 50 ? s.red : s.green}
+          >
+            {feedback}: {countPositiveFeedbackPercentage}%
+          </span>
+        </div>
+      )}
+    </>
   );
 };
 
 Statistics.propTypes = {
   names: PropTypes.arrayOf(PropTypes.node.isRequired),
-  countTotalFeedback: PropTypes.func.isRequired,
+  countTotalFeedback: PropTypes.number.isRequired,
   total: PropTypes.string.isRequired,
-  countPositiveFeedbackPercentage: PropTypes.func.isRequired,
+  countPositiveFeedbackPercentage: PropTypes.number.isRequired,
   feedback: PropTypes.string.isRequired,
   value: PropTypes.arrayOf(PropTypes.node.isRequired),
 };

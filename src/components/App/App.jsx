@@ -29,11 +29,8 @@ class App extends React.Component {
 
   render() {
     const options = Object.entries(this.state);
-
-    //   .reduce((acc, value) => {
-    //   return [...acc, value[0]];
-    // }, []);
-
+    const total = this.countTotalFeedback();
+    const percent = this.countPositiveFeedbackPercentage();
     return (
       <div className={s.app}>
         <Section title="Plese leave feedback">
@@ -46,13 +43,10 @@ class App extends React.Component {
         <Section title="Statistics">
           <Statistics
             names={options}
-            value={options}
             total="Total"
             feedback="Positive Feedback"
-            countTotalFeedback={this.countTotalFeedback}
-            countPositiveFeedbackPercentage={
-              this.countPositiveFeedbackPercentage
-            }
+            countTotalFeedback={total}
+            countPositiveFeedbackPercentage={percent}
           />
         </Section>
       </div>
